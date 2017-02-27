@@ -4,7 +4,7 @@ Tools for the jFAST application.
 For more information about jFAST see http://www.gtt-online.de/de/fast-entwicklungswerkzeuge/
 
 ## jlog
-`jlog` is a Windows PowerShell command line tool to examine a jFAST user logfile. It outputs relevant information as database connections, user login etc.
+`jlog` is a Windows PowerShell command line tool to examine a jFAST user logfile. It outputs relevant information as database connections, user login, exceptions etc.
 
 By default `jlog` uses the logfile written by the newest instance (if several applications are active at the same time). This behaviour may be modified with the options `-w` (Last Write Time) or `-l` (provides an explicit logfile name).
 
