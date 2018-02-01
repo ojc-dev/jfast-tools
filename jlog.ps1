@@ -49,7 +49,7 @@
 # -------------------------------------------------------------------------------------------------
 
 $usage = "usage: jlog [-c] [-h|-Help] [-j|-jl] [-l logfile] [-ls] [-sall|[-serr] [-sexc]] [-t|-Tail n] [-w]"
-$scriptVersion = "v1.13"
+$scriptVersion = "v1.14"
 $scriptName = $MyInvocation.MyCommand.Name
 
 
@@ -263,8 +263,6 @@ write-key-value -key "Java Version" -value $javaVers.Substring($javaVers.IndexOf
 # ------------------------
 $matchString = "Jdbc-Treiberversion zur Datenquelle CONFIG"
 $jdbcVers = Get-Content -First $stopLine -Path $pathnameJfastLogFile | Where-Object {$_.Contains($matchString)}
-#write-host $javaVers
-#write-host $javaVers.IndexOf("java.version")
 write-key-value -key "JDBC-Version" -value $jdbcVers.Substring($jdbcVers.IndexOf($matchString)+$matchString.Length+2)
 
 # ODBC Server name
@@ -329,8 +327,8 @@ write-key-value -key "jFAST Release" -value $jfastVersion.Substring($jfastVersio
 # find something like: ConfigurationProperties übernommen ConfigFiles\jfastT JFAST2 (wt21_AM).conf
 $setProperties = Get-Content -First $stopLine -Path $pathnameJfastLogFile | Where-Object {$_.Contains("setProperties")} | Select-Object -Last 1
 $subString = $setProperties.Substring($setProperties.IndexOf("ConfigurationProperties"))
-#write-host "ConfigFile =" $subString.Substring("ConfigurationProperties übernommen ".Length)
-write-key-value -key "Config File" -value $subString.Substring("ConfigurationProperties übernommen ".Length)
+#write-host "ConfigFile =" $subString.Substring("ConfigurationProperties übernommen".Length)
+write-key-value -key "Config File" -value $subString.Substring("ConfigurationProperties übernommen".Length)
 
 
 
